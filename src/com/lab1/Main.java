@@ -2,40 +2,40 @@ package com.lab1;
 import java.util.Scanner;
 import java.util.Random;
 public class Main {
-    static String languages[]={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
-    static int n = (int) (Math.random() * 1_000_000);
+
     public static void main(String[] args) {
+        String languages[]={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+        int n = (int) (Math.random() * 1_000_000);
         System.out.println("Hello World!");
-        System.out.format("Number before calculations is %d\n",n);
-        calcul(n);
+        System.out.format("Number before modifications is %d\n",n);
+        n=calcul(n);
         int result=sum_of_digits(n);
         willy(result,languages);
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+        n = scanner.nextInt();
         int  matrix[][]=new int [n][n];
         Random_Matrix(n,matrix);
         int visited[] = new int[n];
         conex(n,matrix,visited);
     }
 
-    public static void calcul(int n){
-        n=n*3;n=n+10101;
+    public static int calcul(int n){
+        n=n*3;
+        n=n+0b10101;
         n=n + 0xFF;
         n=n*6;
-        System.out.format("Number after calculations is %d ",n);
+        System.out.format("Number after modifications is %d ",n);
+        return n;
     }
     public static int sum_of_digits(int n){
-          int m;
-          while(n>=10)
-          {   m=0;
-              while(n>0)
-              {
-                  m=m+n%10;
-                  n=n/10;
-              }
-              n=m;
-          }
-          return n;
+        int  r=n%9,cc;
+        if (r==0)
+            cc =  9;
+        else
+            cc = r;
+        System.out.format("Number after calculations is %d ",cc);
+        return cc;
+
     }
     public static void willy(int result, String languages[]){
         System.out.format("\nWilly-nilly, this semester I will learn %s\n",languages[result]);
