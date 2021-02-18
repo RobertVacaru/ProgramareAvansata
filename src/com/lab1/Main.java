@@ -33,7 +33,7 @@ public class Main {
             cc =  9;
         else
             cc = r;
-        System.out.format("Number after calculations is %d ",cc);
+
         return cc;
 
     }
