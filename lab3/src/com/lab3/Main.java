@@ -5,7 +5,8 @@ import java.time.LocalTime;
 public class Main {
 
     public static void main(String[] args) {
-        Hotel hotel=new Hotel("h1",new Rank(1));
+        Hotel hotel;
+        hotel = new Hotel("h1",new Rank(1));
 
         Museum museum1=new Museum("m1");
         museum1.setOpeningTime(LocalTime.of(8,0));
@@ -39,7 +40,21 @@ public class Main {
         city.addLocation(church2);
         city.addLocation(restaurant);
 
+
+        //set by default(from optional)
+        church1.setdefaultOpenhour();
+        church1.setdefaultClosehour();
+
         System.out.println(museum1);
         System.out.println(church1);
+        System.out.println(hotel);
+
+        City Iasi=new City();
+        Iasi.addLocation(museum1);
+        Iasi.addLocation(church1);
+        Iasi.displayLocations();
+
+        System.out.println("\nDuration between opening hour and closing hour in aspecific location:");
+        System.out.println(Visitable.getVisitingDuration(church1));
     }
 }

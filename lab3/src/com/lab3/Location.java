@@ -8,6 +8,9 @@ public abstract class Location implements Comparable<Location>
     private String name;
     private Map<Location, Integer> cost ;
 
+    public Location() {
+    }
+
     public Location(String name) {
         this.name = name;
         cost=new HashMap<>();

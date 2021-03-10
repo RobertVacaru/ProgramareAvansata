@@ -13,4 +13,8 @@ public class Hotel extends Location implements Classifiable{
         return rank;
     }
 
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
+
 }
