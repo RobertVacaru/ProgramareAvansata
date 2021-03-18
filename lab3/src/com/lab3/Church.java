@@ -18,7 +18,7 @@ public class Church extends Location implements Visitable {
         this.openingTime=LocalTime.of(9,30);
     }
     @Override
-    public void setdefaultClosehour()
+    public void setdefault  Closehour()
     {
         this.closingTime=LocalTime.of(20,0);
     }
