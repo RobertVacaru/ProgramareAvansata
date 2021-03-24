@@ -68,10 +68,12 @@ public class Main {
                 save.executeSave(catalog);
             } else if("exit".equals(argument)){
                 return;
-            }else if("report".equals(argument))
+            }else if("raport".equals(argument))
             {
                ReportCommand report=new ReportCommand(catalog);
-            }
+                PlayCommand play = new PlayCommand("C:\\Facultate\\ProgramareAvansata\\Lab5\\Exemplu\\Raport.html");
+                play.executePlay("C:\\Facultate\\ProgramareAvansata\\Lab5\\Exemplu\\Raport.html");
+            } else throw new InvalidCommand();
         }
     }
 }
