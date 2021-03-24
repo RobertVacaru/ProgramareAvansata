@@ -1,16 +1,18 @@
 package com.lab5;
 
+import com.lab5.exceptions.InvalidCatalogException;
+
 import java.awt.*;
 import java.io.*;
-import java.util.Date;
 
 public class CatalogUtil implements Serializable {
 
-    public static void save(Catalog catalog)
-            throws IOException {
+    public static void save(Catalog catalog) throws IOException {
         try (var oos = new ObjectOutputStream(
-                new FileOutputStream(catalog.getPath()))) {
+                new FileOutputStream(new File(catalog.getPath() + catalog.getName())))) {
             oos.writeObject(catalog);
+        }catch(IOException e){
+            e.printStackTrace();
         }
     }
 

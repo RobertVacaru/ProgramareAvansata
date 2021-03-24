@@ -18,6 +18,14 @@ public class Catalog implements Serializable {
         return name;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     public Catalog(String name, String path) {
         this.name = name;
         this.path = path;
@@ -25,7 +33,7 @@ public class Catalog implements Serializable {
 
     public void list() {
         for(var x : items) {
-            System.out.println(x + " ");
+            System.out.println(x.getId() + " ");
         }
     }
     /*public void play(File file) throws IOException {

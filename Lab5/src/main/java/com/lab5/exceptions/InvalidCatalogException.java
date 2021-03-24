@@ -1,4 +1,4 @@
-package com.lab5;
+package com.lab5.exceptions;
 
 public class InvalidCatalogException extends Exception {
     public InvalidCatalogException(Exception ex) {
