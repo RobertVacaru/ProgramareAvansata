@@ -20,8 +20,6 @@ public class MainFrame extends JFrame {
         configPanel=new ConfigPanel(this);
         controlPanel=new ControlPanel(this);
 
-
-
         add(controlPanel,SOUTH);
         add(canvas, CENTER);
         add(configPanel,NORTH);

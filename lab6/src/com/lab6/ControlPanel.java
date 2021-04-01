@@ -4,8 +4,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ControlPanel extends JPanel {
@@ -27,7 +25,6 @@ public class ControlPanel extends JPanel {
         add(resetBtn);
         add(exitBtn);
 
-
         loadBtn.addActionListener(this::load);
         saveBtn.addActionListener(this::save);
         resetBtn.addActionListener(this::reset);
@@ -36,19 +33,23 @@ public class ControlPanel extends JPanel {
     }
     private void save(ActionEvent e) {
         try {
-            ImageIO.write(frame.canvas.image, "PNG", new File("d:/test.png"));
+            JFileChooser fileChooser = new JFileChooser();
+            int result = fileChooser.showOpenDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+            ImageIO.write(frame.canvas.image, "PNG", fileChooser.getSelectedFile());}
         } catch (IOException ex) { System.err.println(ex); }
     }
     private void load(ActionEvent e)
     {
         try{
-            frame.remove(frame.canvas);
-            frame.canvas=new DrawingPanel(frame);
-            FileInputStream inputstream = new FileInputStream("C:\\images\\image.png");
-            frame.canvas.image=ImageIO.read(inputstream);
-            frame.add(frame.canvas);
-            frame.setVisible(true);
-
+            JFileChooser fileChooser = new JFileChooser();
+            int result = fileChooser.showOpenDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                frame.remove(frame.canvas);
+                frame.canvas=new DrawingPanel(frame,ImageIO.read(fileChooser.getSelectedFile()));
+                frame.add(frame.canvas);
+                frame.setVisible(true);
+            }
         } catch (IOException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
         }

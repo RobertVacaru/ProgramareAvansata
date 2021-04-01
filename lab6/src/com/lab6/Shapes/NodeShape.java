@@ -1,4 +1,4 @@
-package com.lab6;
+package com.lab6.Shapes;
 
 import java.awt.geom.Ellipse2D;
 
