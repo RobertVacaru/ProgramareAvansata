@@ -20,9 +20,9 @@ public class MovieDao implements Dao<Movie> {
         PreparedStatement ps=con.prepareStatement(query);
         ps.setInt(1,movie.getId());
         ps.setString(2,movie.getTitle());
-        ps.setDate(3, (java.sql.Date) movie.getReleaseDate());
-        ps.setInt(4,movie.getDuration());
-        ps.setInt(5,movie.getScore());
+        ps.setInt(3,  movie.getDuration());
+        ps.setInt(4,movie.getScore());
+        ps.setString(5,movie.getReleaseDate());
         ps.executeUpdate();
     }
     @Override
@@ -45,8 +45,8 @@ public class MovieDao implements Dao<Movie> {
         movie.setId(parseInt(params[0]));
         movie.setTitle(Objects.requireNonNull(
                 params[1], "Title cannot be null"));
-        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(params[2]);
-        movie.setReleaseDate(date1);
+
+        movie.setReleaseDate(params[2]);
         movie.setId(parseInt(params[3]));
         movie.setId(parseInt(params[4]));
         movies.add(movie);

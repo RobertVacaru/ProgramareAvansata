@@ -8,15 +8,16 @@ public class Main {
         Connection con;
         Singleton x = new Singleton();
         con= x.getInstance();
-        Movie movie = new Movie(1, "Jumanji", new SimpleDateFormat("dd/MM/yyyy").parse("31/12/2000"), 200, 4);
+        Movie movie = new Movie(3, "Jumanji", "31/12/2000", 200, 4);
         MovieDao movieDao = new MovieDao(con);
         movieDao.save(movie);
-        Genres genre = new Genres(3, "Action");
+        Genres genre = new Genres(11, "Action");
         GenresDao genresDao = new GenresDao(con);
         genresDao.save(genre);
         genresDao.printGenres();
+        movieDao.printMovie();
         genresDao.add(genre);
         movieDao.add(movie);
-        movieDao.printMovie();
+        genresDao.getGenre(11);
     }
 }

@@ -4,11 +4,11 @@ import java.util.Date;
 public class Movie {
     private int id;
     private String title;
-    private Date releaseDate;
+    private String releaseDate;
     private int duration;
     private int score;
 
-    public Movie(int id, String title,Date releaseDate, int duration, int score) {
+    public Movie(int id, String title,String releaseDate, int duration, int score) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -32,11 +32,11 @@ public class Movie {
         this.title = title;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
