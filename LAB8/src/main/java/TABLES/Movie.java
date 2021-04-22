@@ -1,5 +1,4 @@
-import java.time.LocalTime;
-import java.util.Date;
+package TABLES;
 
 public class Movie {
     private int id;
@@ -8,7 +7,10 @@ public class Movie {
     private int duration;
     private int score;
 
-    public Movie(int id, String title,String releaseDate, int duration, int score) {
+    public Movie() {
+    }
+
+    public Movie(int id, String title, String releaseDate, int duration, int score) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -54,5 +56,16 @@ public class Movie {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "TABLES.Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", duration=" + duration +
+                ", score=" + score +
+                '}';
     }
 }

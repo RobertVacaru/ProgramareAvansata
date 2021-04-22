@@ -12,7 +12,7 @@ class Singleton {
     public Connection getInstance(){
         if(con ==null) {
             try {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lab8", "root", "scoobydoo123");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lab8", "root", "root");
             } catch (
                     SQLException e) {
                 System.err.println("Cannot connect to DB: " + e);

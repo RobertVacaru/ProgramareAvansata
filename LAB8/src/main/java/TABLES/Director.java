@@ -1,11 +1,13 @@
-public class Genres {
+package TABLES;
+
+public class Director {
     private int id;
     private String name;
 
-    public Genres() {
+    public Director() {
     }
 
-    public Genres(int id, String name) {
+    public Director(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -24,5 +26,13 @@ public class Genres {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "TABLES.Director{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
