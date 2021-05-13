@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) throws IOException {
-        String serverAddress = "127.0.0.1"; // The server's IP address
+        String serverAddress = "127.0.0.1"; // The server's IP addressg
         int PORT = 8100; // The server's port
         try (
                 Socket socket = new Socket(serverAddress, PORT);
