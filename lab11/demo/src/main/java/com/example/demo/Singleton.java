@@ -4,28 +4,25 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-class Singleton {
-    private static Connection con;
+public class Singleton {
+    private static Connection connection;
 
-    public Singleton() {
+    private Singleton() {
     }
-    public Connection getInstance() {
-        if (con == null) {
-            try {
-                con =DriverManager.getConnection("jdbc:mariadb://localhost:3306/lab11", "root", "root");
-            } catch (SQLException var5) {
-                System.err.println("Cannot connect to DB: " + var5);
-            } finally {
-                if (con != null) {
-                    System.out.println("Connexion created.\n");
-                }
 
-            }
+    public static Connection getConnection() throws SQLException {
+        if (connection != null) {
+            return connection;
+        } else {
+            connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/lab11", "root", "root");
+            return connection;
         }
-        return con;
     }
 
-    public static Connection getCon() {
-        return con;
+    public static void closeConnection() throws SQLException {
+        if (connection != null) {
+            connection.close();
+        }
+
     }
 }
