@@ -3,8 +3,11 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.example.demo;
+package com.example.demo.Person;
 
+import com.example.demo.Person.Person;
+import com.example.demo.RestController.CustomNotFoundException;
+import com.example.demo.Singleton;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -95,7 +98,7 @@ public class PersonController {
         pstmt.setInt(2, id);
         pstmt.execute();
         if (Person == null)
-            return new ResponseEntity("Person not found", HttpStatus.NOT_FOUND);
+            throw new CustomNotFoundException("Person not found with id:"+id);
         else return new ResponseEntity("Person updated successfully", HttpStatus.OK);
     }
 
@@ -104,7 +107,7 @@ public class PersonController {
         new Person();
         Person Person = this.findById(id);
         if (Person == null) {
-            return new ResponseEntity("Person not found", HttpStatus.GONE);
+            throw new CustomNotFoundException("Person not found with id:"+id);
         } else {
             int id1 = Person.getId();
             String sql = "DELETE from Person where id = ?";
@@ -113,63 +116,28 @@ public class PersonController {
             pstmt.execute();
             return new ResponseEntity("Person removed", HttpStatus.OK);
         }
-    }
-
-    @DeleteMapping()
-    public ResponseEntity<String> deletePerson(@RequestParam String name) throws SQLException {
-        new Person();
-        Person Person = this.findByName(name);
-        if (Person == null) {
-            return new ResponseEntity("Person not found", HttpStatus.GONE);
-        } else {
-            int id1 = Person.getId();
-            String sql = "DELETE from Person where id = ?";
-            PreparedStatement pstmt = this.connection.prepareStatement(sql);
-            pstmt.setInt(1, id1);
-            pstmt.execute();
-            return new ResponseEntity("Person removed", HttpStatus.OK);
-        }
-    }
-
-    public Person findByName(String name) {
-        Person pers = new Person();
-
-        try {
-            String sql = "SELECT * from Person where name = ?";
-            PreparedStatement pstmt = this.connection.prepareStatement(sql);
-            pstmt.setString(1, name);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                pers.setId(id);
-                pers.setName(name);
-            }
-        } catch (SQLException var7) {
-            var7.printStackTrace();
-        }
-
-        return pers;
     }
 
     public Person findById(int id) {
         Person persoana = new Person();
 
         try {
-            String sql = "SELECT * from Person where id = ?";
+            String sql = "SELECT * from person ";
             PreparedStatement pstmt = this.connection.prepareStatement(sql);
-            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                String name = rs.getString("name");
-                persoana.setId(id);
-                persoana.setName(name);
+                int idCurrent = rs.getInt("id");
+                if(idCurrent==id) {
+                    persoana.setId(id);
+                    persoana.setName(rs.getString("name"));
+                    persoana.setFriends(rs.getInt("numberOfFriends"));
+                    return persoana;
+                }
             }
         } catch (SQLException var7) {
             var7.printStackTrace();
         }
-
-        return persoana;
+         return null;
     }
 }

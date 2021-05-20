@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Relationship;
 
 public class Relationship {
     private int id;
