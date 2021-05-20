@@ -1,3 +1,5 @@
+package com.compulsory;
+
 public class MyProgram {
     @Test public static void m1() { }
     public static void m2() { }

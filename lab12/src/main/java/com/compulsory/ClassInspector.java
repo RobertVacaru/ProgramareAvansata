@@ -1,3 +1,5 @@
+package com.compulsory;
+
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;

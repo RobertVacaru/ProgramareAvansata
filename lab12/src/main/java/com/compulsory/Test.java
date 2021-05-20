@@ -1,3 +1,5 @@
+package com.compulsory;
+
 import java.lang.annotation.*;
 /**
  * We are going to use this annotation to mark methods.

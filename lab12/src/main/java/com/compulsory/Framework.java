@@ -1,3 +1,5 @@
+package com.compulsory;
+
 import java.lang.reflect.*;
 public class Framework {
     public static void frameWorkForClass(String name) throws Exception {
@@ -8,7 +10,7 @@ public class Framework {
                     m.invoke(null);
                     passed++;
                 } catch (Throwable ex) {
-                    System.out.printf("Test %s failed: %s %n",
+                    System.out.printf("com.compulsory.Test %s failed: %s %n",
                             m, ex.getCause());
                     failed++;
                 }
