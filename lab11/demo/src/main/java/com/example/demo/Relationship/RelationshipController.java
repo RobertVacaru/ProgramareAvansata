@@ -68,10 +68,22 @@ public class RelationshipController {
 
         return relatii;
     }
-
+    public void verifyRelationship(int id1,int id2) throws SQLException {
+        String sql1 = "Select * from relationship";
+        PreparedStatement pstmt1 = this.connection.prepareStatement(sql1);
+        ResultSet rs = pstmt1.executeQuery();
+        while(rs.next())
+        {
+            if(rs.getInt("id1")==id1 && rs.getInt("id2")==id2)
+            {
+                throw new CustomNotFoundException("Relationship already exists");
+            }
+        }
+    }
     @PostMapping
     public ResponseEntity<String> createRelationship(@RequestParam int id1, @RequestParam int id2) {
         try {
+            verifyRelationship(id1,id2);
             int idCurrent = getIdMax();
             String sql1 = "INSERT INTO relationship values(?,?,?)";
             PreparedStatement pstmt1 = this.connection.prepareStatement(sql1);
